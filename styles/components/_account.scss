@@ -1,0 +1,218 @@
+@use "../mixins";
+@use "../variables" as *;
+
+.account {
+
+    .user__view {
+        display: grid;
+        grid-template-columns: 1fr;
+        justify-content: start;
+        margin: 0 auto;
+
+        @include mixins.breakpoint-up(medium){
+            margin-top: $mb-3;
+            grid-template-columns: 30% 1fr;
+            gap: 2rem;
+        }
+
+        &-menu {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            color: $textClr;
+            background-color: $containerClr;
+            margin-bottom: $mb-1;
+
+            .side__nav {
+
+                &-active {
+                    border-left: 4px solid $textClr !important;
+                }
+
+                & li {
+                    margin: 1rem 0;
+                    border-left: 0 solid $textClr;
+
+                    &:hover {
+                        border-left: 4px solid $textClr !important;
+                    }
+                }
+
+                & a:link,
+                & a:visited {
+                    padding: 1rem 2rem;
+                    color: $textClr;
+                    display: flex;
+                    align-items: center;
+                    gap: 1rem;
+                }
+
+                & svg {
+                    height: 1.9rem;
+                    width: 1.9rem;
+                    fill: $textClr;
+                }
+            }
+
+            .admin__nav {
+                margin-top: $mb-3;
+
+                &-heading {
+                    margin: $mb-1 0;
+                    text-transform: uppercase;
+                }
+            }
+        }
+
+        .user__view-content {
+            padding: 1rem 0;
+
+            @include mixins.breakpoint-up(medium) {
+                padding-top: 0;
+            }
+
+            .user__view-form-container {
+                margin-bottom: $mb-1;
+
+                .form__user-data {
+                    background-color: $cardCrl;
+                    margin: 0 auto;
+                    padding: 2rem;
+                    max-width: 65rem;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    row-gap: 1rem;
+                    color: $textClrLight;
+                    box-shadow: $boxSh;
+
+                    @include mixins.breakpoint-up(large){
+                        row-gap: 1.5rem;
+                    }
+                }
+
+                .form__title {
+                    text-transform: capitalize;
+                    text-align: center;
+                }
+
+                .form__control {
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    row-gap: .5rem;
+                }
+    
+                .form__label {
+                    display: block;
+                    font-size: $fontMd;
+                    font-weight: $weightMd;
+                    margin-bottom: $mb-0-5;
+    
+                    @include mixins.breakpoint-up(medium){
+                        align-self: flex-start;
+                    }
+                }
+    
+                .form__input {
+                    display: block;
+                    font-family: inherit;
+                    font-size: $fontMd;
+                    color: $containerClr;
+                    width: 100%;
+                    height: 2rem;
+                    border: 3px solid transparent;
+                    transition: all .3s;
+                    border-radius: 4px !important;
+                    background-color: $titleClr;
+                    padding: .1rem .3rem;
+    
+                    &:focus {
+                        outline: none;
+                        border-bottom: 3px solid $successCrl;
+                    }
+    
+                    &:focus:invalid {
+                        border-bottom: 3px solid $errorCrl;
+                    }
+    
+                    &::-webkit-input-placeholder {
+                        color: $textClr;
+                    }
+                }
+
+                .form__photo-upload {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+
+                    .form__user-photo {
+                        height: 6rem;
+                        width: 5.5rem;
+                        border-radius: 50%;
+                        margin-right: 2rem;
+                        border: 1px solid $titleClr;
+                    }
+
+                    .form__upload {
+                        width: .1px;
+                        height: .1px;
+                        opacity: 0;
+                        overflow: hidden;
+                        position: absolute;
+                        z-index: -1;
+                    }
+
+                    .form__upload:focus + label {
+                        outline: 3px solid $firstClr;
+                        outline-offset: 3px;
+                    }
+
+                    .form__upload + label {
+                        color: $firstClr;
+                        display: inline-block;
+                        text-decoration: none;
+                        border-bottom: 1px solid $firstClr;
+                        padding: 3px;
+                        -webkit-transition: all 0.2s;
+                        transition: all 0.2s;
+                        cursor: pointer;
+                    }
+
+                    .form__upload + label:hover {
+                        background-color: $firstClr;
+                        color: $titleClr;
+                        -webkit-box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+                        box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+                        -webkit-transform: translateY(-2px);
+                        transform: translateY(-2px);
+                    }
+                }
+            }
+
+            .form__user-password {
+                background-color: $cardCrl;
+                margin: 0 auto;
+                padding: 2rem;
+                max-width: 65rem;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                row-gap: 1rem;
+                color: $textClrLight;
+                box-shadow: $boxSh;
+
+                .form__input::placeholder {
+                    font-size: $fontLg;
+                }
+
+                @include mixins.breakpoint-up(large){
+                    row-gap: 1.5rem;
+                }
+            }
+        }
+    }
+}    

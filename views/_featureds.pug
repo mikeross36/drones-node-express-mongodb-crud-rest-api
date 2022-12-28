@@ -1,0 +1,15 @@
+section.featureds.section.container#featureds 
+    h2.section__title featured 
+    .featureds__container 
+
+        each featured in featureds 
+        
+            article.featured__card 
+                span.featured__tag new 
+                img.featured__img(src=`/images/featured/${featured.imageCover}`)
+                .featured__data 
+                    h3.featured__title= `${featured.name}`
+                    p.featured__operating= `Operating Difficulty: ${featured.operatingDifficulty}`
+                    p.featured__ratings= `Average Ratings: ${featured.ratingsAverage}`
+                    span.featured__price= `${featured.price} €`
+                    a.button.button--gray.button--small(href=`/featured/${featured.slug}`) details

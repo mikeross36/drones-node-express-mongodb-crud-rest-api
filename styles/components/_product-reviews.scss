@@ -1,0 +1,89 @@
+@use "../variables" as *;
+@use "../mixins";
+
+.product__reviews {
+    margin: 0 auto;
+    padding: 1rem;
+    margin-bottom: $mb-2;
+
+    &-title {
+        color: $textClrLight;
+        text-transform: capitalize;
+        margin: $mb-1 0;
+        text-align: center;
+
+        @include mixins.breakpoint-up(medium){
+            text-align: left;
+        }
+    }
+
+    .review__container {
+        margin: $mb-1 0;
+        padding: 2rem 0;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+        justify-items: center;
+        gap: 2rem;
+
+        @include mixins.breakpoint-up(medium){
+            justify-items: start;
+        }
+
+        .review__card {
+            background-color: $cardCrl;
+            color: $textClrLight;
+            height: auto;
+            width: 15rem;
+            padding: 1.5rem 1rem;
+            box-shadow: $boxSh;
+
+            .review__avatar {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: .5rem;
+
+                &-img {
+                    width: 70px;
+                    height: 70px;
+                    object-fit: fill;
+                    filter: drop-shadow(0 12px 8px rgba(0,0,0, .2)); 
+                }
+
+                .review__user {
+                    font-size: $fontMd;
+                }
+            }
+
+            .review__text {
+                padding: 1rem;
+                text-align: left;
+                font-size: $fontSm;
+                font-weight: normal;
+                text-transform: none;
+                font-style: italic;
+                line-height: 1.4;
+            }
+
+            .review__rating {
+                margin: $mb-0-5 0;
+                display: flex;
+                justify-content: space-around;
+
+                .review__star {
+                    height: 1.5rem;
+                    width: 1.5rem;
+                    margin-right: .5px;
+                }
+
+                .review__star-active {
+                    fill: $firstClr;
+                  }
+                .review__star-inactive {
+                    fill: $textClr;
+                }
+            }
+        }
+    }
+}
+

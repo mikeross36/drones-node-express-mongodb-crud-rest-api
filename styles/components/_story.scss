@@ -1,0 +1,88 @@
+@use "../mixins";
+@use "../variables" as *;
+
+.story {
+    &__container{
+        display: grid;
+        row-gap: 5rem;
+        justify-items: center;
+        
+        
+        @include mixins.breakpoint-up(medium){
+            grid-template-columns: repeat(2, 1fr);
+            align-items: center;
+            column-gap: 3rem;
+            padding: 3rem 0;
+        }
+
+        @include mixins.breakpoint-up(large) {
+            padding-top: 3rem;
+            align-items: start;
+        }
+
+        .story__data {
+            margin: 0 auto;
+            padding: 1rem;
+
+            @include mixins.breakpoint-up(medium) {
+
+                .section__title-story{
+                    text-align: initial;
+        
+                    &::before{
+                        margin: initial;
+                    }
+                }
+            }
+
+            .story__title{
+                font-size: 2rem;
+                margin-bottom: 1rem;
+                color: $textClrLight;
+                text-transform: capitalize;
+            }
+
+            .story__description{
+                margin-bottom: 2.5rem;
+                color: $textClrLight;
+
+                @include mixins.breakpoint-up(large){
+                    line-height: 1.5;
+                }
+            }
+        }
+    }
+  
+    .story__images{
+        position: relative;
+
+        .story__square{
+            width: 320px;
+            height: 320px;
+    
+            @include mixins.breakpoint-up(xlarge){
+                height: 450px;
+                width: 450px;
+            }
+        }
+        
+        .story__img{
+            width: 300px;
+            position: absolute;
+            left: 2rem;
+            top: -3rem;
+            box-shadow: $bcgBoxSh;
+
+            @include mixins.breakpoint-up(medium){
+                transform: perspective( 800px ) rotateY( -8deg );
+                width: 390px;
+                left: .5rem;
+            }
+
+            @include mixins.breakpoint-up(xlarge){
+                width: 450px;
+                left: .5rem;
+            }
+        }
+    }
+}

@@ -1,0 +1,25 @@
+extends base
+
+block content 
+    section.reviews.section.container 
+        h2.section__title all reviews
+            .reviews__container 
+                each review in reviews 
+                    figure.user__review-card
+                        .user__review-avatar 
+                            img.user__review-avatar-img(src=`/images/users/${review.user.photo}` alt=`${review.user.name}`)
+                            h5.user__review-name= review.user.name 
+                        if review.drone
+                            p.review__object= review.drone.name
+                            p.user__reviev-text= review.review 
+                            .review__rating 
+                                each star in [1,2,3,4,5]
+                                    svg.review__star(class=`review__star-${review.rating >= star ? 'active' : 'inactive'}`)
+                                        use(xlink:href='/images/icons.svg#icon-star')
+                        else 
+                            p.review__object= review.featured.name
+                            p.user__reviev-text= review.review 
+                            .review__rating 
+                                each star in [1,2,3,4,5]
+                                    svg.review__star(class=`review__star-${review.rating >= star ? 'active' : 'inactive'}`)
+                                        use(xlink:href='/images/icons.svg#icon-star')

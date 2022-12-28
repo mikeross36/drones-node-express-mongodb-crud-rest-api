@@ -1,0 +1,21 @@
+"use strict"
+import axios from "axios";
+import "core-js/actual";
+import "regenerator-runtime/runtime";
+import { displayAlert } from "./alerts"
+import { loadStripe } from '@stripe/stripe-js/pure';
+// const stripe = Stripe("pk_test_51MIVF1HiUrG1dfcH8HuPCxW9xcCFFRHwIexNVNTVHjoWUtQWlYRjWYqpRJMyviloxKPE3pDQsL2w8f08ZYy7qmH000Sf33z9Ef")
+
+export const preorderProduct = async droneId => {
+    const stripe = await loadStripe("pk_test_51MIVF1HiUrG1dfcH8HuPCxW9xcCFFRHwIexNVNTVHjoWUtQWlYRjWYqpRJMyviloxKPE3pDQsL2w8f08ZYy7qmH000Sf33z9Ef")
+    try {
+        const session = await axios(`http://localhost:3000/api/v1/preorders/checkout-session/${droneId}`)
+        console.log(session)
+        await stripe.redirectToCheckout({
+            sessionId: session.data.session.id
+        });
+    }
+    catch (error) {
+        displayAlert("error", error)
+    }
+};

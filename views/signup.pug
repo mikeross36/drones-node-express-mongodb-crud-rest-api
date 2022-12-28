@@ -1,0 +1,21 @@
+extends base
+
+block content 
+    section.signup.section.container#signup 
+        h2.section__title Signup to create account
+        .signup__form-bcg 
+            form.signup__form
+                .form__control 
+                    label.form__label(for='name') name 
+                    input.form__input#name(type='text', placeholder='your name...', required)
+                .form__control 
+                    label.form__label(form='email') email address 
+                    input.form__input#email(type='email', placeholder='your@someemail.com', required)
+                .form__control 
+                    label.form__label(for='password') password
+                    input.form__input.input__pass#password(type='password', placeholder='........', minlength='8', required)
+                .form__control 
+                    label.form__label(for='password-confirm') confirm password 
+                    input.form__input.input__pass-conf#password-confirm(type='password', placeholder='........' required)
+                .form__control 
+                    button.button signup 

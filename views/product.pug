@@ -1,0 +1,59 @@
+extends base
+
+include _reviewCard
+    //- script(src='https://js.stripe.com/v3/' crossorigin="")
+block content 
+    section.product.section.container 
+        .product__description 
+            h3.product__description-title= `About ${product.name}`
+            p.product__description-text= product.description
+        .product__container 
+            .product__data 
+                h2.product__section-title= product.name 
+                .product__data-list 
+                    span.product__price= `Price ${product.price} €`
+                    span
+                        img(src='/images/icons/flighttime-icon.svg')
+                        p= `Flight time: ${product.flightTime}`
+                    span 
+                        img(src=`/images/icons/speed-icon.svg`)
+                        p= `Cruising speed: ${product.cruisingSpeed}`
+                    span 
+                        img(src=`/images/icons/vehicle-mass-icon.svg`)
+                        p= `Vehicle mass: ${product.vehicleMass}`
+                    span
+                        img(src=`/images/icons/flight-range.svg`)
+                        p= `Flight range: ${product.flightRange}`
+                    span 
+                        img(src=`/images/icons/payload-mass-icon.svg`)
+                        p= `Max payload mass: ${product.maxPayloadMass}`
+                    span 
+                        img(src=`/images/icons/difficulty-icon.svg`)
+                        p= `Operating dofficulty: ${product.operatingDifficulty}`
+                    span 
+                        img(src=`/images/icons/ratings-icon.svg`)
+                        p= `Ratings: ${product.ratingsAverage} / 5`
+                if user != null
+                    .preorder__button 
+                        .button.button--small#preorder-product(data-product-id=`${product.id}`) preorder 
+                else 
+                    .preorder__button 
+                        a.button.button--small(href='/login') login for preorder 
+            .product__image 
+                img.product__img(src=`/images/drones/${product.imageCover}`, alt=`${product.name}`)
+        .product__pilots 
+            h3.product__pilots-title drone pilots 
+            .pilot__container 
+                each pilot in product.pilots 
+                    figure.pilot__card 
+                        img.pilot__img(src=`/images/users/${pilot.photo}` alt=`${pilot.name}`)
+                        .pilot__data 
+                            h4.pilot__name= pilot.name 
+                            p.pilot__email= pilot.email
+        .product__reviews 
+            h3.product__reviews-title user reviews 
+                .review__container 
+                    each review in product.reviews 
+                        +reviewCard(review)
+
+    

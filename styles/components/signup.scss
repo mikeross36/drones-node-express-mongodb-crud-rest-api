@@ -1,0 +1,85 @@
+@use "../mixins";
+@use "../variables" as *;
+
+.signup {
+
+    .signup__form-bcg {
+        // margin: 0 auto;
+        background-color: $cardCrl;
+        padding: 1rem;
+        max-width: 55rem;
+        color: $textClrLight;
+        box-shadow: $boxSh;
+
+        @include mixins.breakpoint-up(medium){
+            transform: perspective( 800px ) rotateY( -8deg );
+        }
+
+        .signup__form {
+            margin: 0 auto;
+            padding: 1rem;
+            max-width: 45rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            row-gap: .5rem;
+
+            @include mixins.breakpoint-up(medium){
+                row-gap: 1rem;
+            }
+
+            .form__control {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                row-gap: .5rem;
+
+                .form__label {
+                    display: block;
+                    font-size: $fontSlg;
+                    font-weight: $weightMd;
+                    text-transform: capitalize;
+                    margin-bottom: $mb-0-5;
+
+                    @include mixins.breakpoint-up(medium){
+                        align-self: flex-start;
+                    }
+                }
+
+                .form__input {
+                    display: block;
+                    font-family: inherit;
+                    font-size: $fontMd;
+                    color: $containerClr;
+                    width: 100%;
+                    height: 2rem;
+                    border: 3px solid transparent;
+                    transition: all .3s;
+                    border-radius: 4px;
+                    background-color: $titleClr;
+                    padding: .1rem .3rem;
+
+                    &:focus {
+                        outline: none;
+                        border-bottom: 3px solid $successCrl;
+                    }
+    
+                    &:focus:invalid {
+                        border-bottom: 3px solid $errorCrl;
+                    }
+    
+                    &::-webkit-input-placeholder {
+                        color: $textClr;
+                    }
+                }
+
+                .input__pass-conf::placeholder,
+                .input__pass::placeholder {
+                    font-size: $fontLg;
+                }
+            }
+        }
+    }
+}

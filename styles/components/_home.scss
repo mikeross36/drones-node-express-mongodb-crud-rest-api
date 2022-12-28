@@ -1,0 +1,127 @@
+@use "../mixins";
+@use "../variables" as *;
+
+.home {
+    &__container {
+        display: grid;
+        row-gap: 2rem;
+        position: relative;
+
+        @include mixins.breakpoint-up(medium){
+            padding-top: 2rem;
+            grid-template-columns: 1fr max-content;
+            align-items: center;
+        }
+
+        @include mixins.breakpoint-up(large){
+            column-gap: .5rem;
+        }
+    }
+
+    .home__img-background {
+        width: 258px;
+        height: 430px;
+        padding-bottom: 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        justify-self: flex-end;
+        transform: translateX(1.5rem);
+
+        @include mixins.breakpoint-up(medium) {
+            order: 1;
+            width: 320px;
+            height: 490px;
+        }
+
+        @include mixins.breakpoint-up(large) {
+            justify-content: flex-end;
+            width: 470px;
+            height: 580px;
+            transform: translateX(0);
+        }
+
+        .home__img {
+            width: 240px;
+            box-shadow: $bcgBoxSh;
+
+            @include mixins.breakpoint-up(small){
+                width: 240px;
+            }
+
+            @include mixins.breakpoint-up(medium) {
+                width: 280px;
+                transform: perspective( 800px ) rotateY( -8deg );
+            }
+
+            @include mixins.breakpoint-up(large) {
+                width: 360px;
+            }
+        }
+    }
+
+    .home__social {
+        position: absolute;
+        top: 30%;
+        left: -6rem;
+        transform: rotate(-90deg);
+        display: flex;
+        column-gap: 1.5rem;
+
+        @include mixins.breakpoint-up(medium) {
+            top: 47%;
+        }
+
+        @include mixins.breakpoint-up(large) {
+            column-gap: 3rem;
+            left: -7rem;
+            top: 50%;
+        }
+
+        &-link {
+            font-size: $fontSm;
+            color: $firstClr;
+            font-weight: $weightMd;
+            text-transform: capitalize;
+            transition: .3s;
+
+            &:hover {
+                color: $textClrLight;
+            }
+        }
+    }
+
+    .home__data {
+        display: flex;
+        flex-direction: column;
+        row-gap: 1rem;
+        color: $textClrLight;
+
+        @include mixins.breakpoint-up(medium) {
+            padding: 0 0 5rem 5rem;
+        }
+
+        @include mixins.breakpoint-up(large) {
+            row-gap: 1.5rem;
+            padding: 0 0 0 8rem;
+        }
+    }
+
+    .home__title {
+        font-weight: $weightLg;
+        font-family: monospace;
+
+        @include mixins.breakpoint-up(xlarge) {
+            font-weight: $weightLg;
+        }
+    }
+
+    .home__subtitle {
+        font-weight: normal;
+    }
+
+    .home__btns {
+        display: flex;
+        align-items: center;
+    }
+}

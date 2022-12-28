@@ -1,0 +1,52 @@
+extends base
+include _reviewCard
+
+block content 
+    section.featured.section.container 
+        .featured__description 
+            h3.featured__description-title= `About ${featured.name}`
+            p.featrued__description-text= featured.description 
+        .featured__container 
+            .featured__data 
+                h2.featured__section-title= featured.name 
+                .featured__data-list 
+                    span.featured__price= `Price ${featured.price}`
+                    span 
+                        img(src='/images/icons/flighttime-icon.svg')
+                        p= `Flight time: ${featured.flightTime}`
+                    span 
+                        img(src='/images/icons/speed-icon.svg')
+                        p= `Cruising speed: ${featured.cruisingSpeed}`
+                    span 
+                        img(src='/images/icons/vehicle-mass-icon.svg')
+                        p= `Vehicle mass: ${featured.vehicleMass}`
+                    span
+                        img(src='/images/icons/flight-range.svg')
+                        p= `Flight range: ${featured.flightRange}`
+                    span 
+                        img(src='/images/icons/payload-mass-icon.svg')
+                        p= `Payload mass: ${featured.maxPayloadMass}`
+                    span 
+                        img(src='/images/icons/difficulty-icon.svg')
+                        p= `Operating difficulty: ${featured.operatingDifficulty}`
+                    span
+                        img(src='/images/icons/ratings-icon.svg')
+                        p= `Ratings: ${featured.ratingsAverage} / 5`
+            .featured__image 
+                img.featured__img(src=`/images/featured/${featured.imageCover}` alt=`${featured.name}`)
+        .featured__reviews 
+            h3.featured__reviews-title user reviews 
+                .featured__review-container 
+                    each review in featured.reviews 
+                        figure.featured__review-card
+                            .featured__review-avatar 
+                                img.featured__review-avatar-img(src=`/images/users/${review.user.photo}` alt=`${review.user.name}`)
+                                h5.featured__review-name= review.user.name 
+                            p.featured__review-text= review.review 
+                            .featured__review-rating 
+                                each star in [1,2,3,4,5]
+                                    svg.review__star(class=`review__star-${review.rating >= star ? 'active' : 'inactive'}`)
+                                        use(xlink:href='/images/icons.svg#icon-star')
+
+            
+        

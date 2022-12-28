@@ -1,0 +1,19 @@
+extends base
+
+block content
+
+    section.preorders.section.container#preorders 
+        h2.section__title #{title}
+        .preorders__container 
+
+            each product in products 
+
+                figure.product__card 
+                    img.product__img(src=`/images/drones/${product.imageCover}` alt=`${product.name}`)
+                    .product__data
+                        h4.product__name= product.name
+                        p.product__operating= `Operating difficulty: ${product.operatingDifficulty}`
+                        p.product__ratings= `Average ratings: ${product.ratingsAverage}`
+                        span.product__price= `price: ${product.price}€`
+                        p.product__summary= product.summary
+                        a.button.button--gray.button--small(href=`/product/${product.slug}`) Details 

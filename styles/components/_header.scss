@@ -1,0 +1,234 @@
+@use "../variables" as *;
+@use "../mixins";
+
+.header {
+    width: 100%;
+    background: transparent;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+
+    .nav {
+        height: 4rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    
+        @include mixins.breakpoint-up(medium){
+            height: 5rem;
+            justify-content: initial;
+            column-gap: 3.5rem;
+        }
+    
+        .nav__logo {
+            margin-right: 1rem;
+
+            & img {
+                width: 50px;
+                height: 50px;
+            }
+        }
+    
+        .nav__menu {
+
+            @include mixins.breakpoint-down(medium){
+                position: fixed;
+                background-color: $containerClr;
+                top: 0;
+                right: -100%;
+                width: 100%;
+                height: 100%;
+                padding: 6rem 0rem;
+            }
+    
+            &.show-menu {
+                right: 0;
+                transition: right .2s ease-in-out;
+            }
+        }
+    
+        .nav__list {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            row-gap: 3rem;
+    
+            @include mixins.breakpoint-up(medium){
+                flex-direction: row;
+                column-gap: 2.5rem;
+            }
+
+            @include mixins.breakpoint-up(large){
+                column-gap: 3rem;
+            }
+
+            @include mixins.breakpoint-up(xlarge){
+                column-gap: 4.5rem;
+            }
+        }
+    
+        .nav__link {
+            color: $textClrLight;
+            font-weight: $weightMd;
+            text-transform: uppercase;
+            font-size: $fontSlg;
+    
+            &.active-link {
+                text-decoration: underline;
+            }
+    
+            @include mixins.breakpoint-up(medium) {
+                font-size: $fontMd;
+            }
+
+            @include mixins.breakpoint-up(large) {
+                font-size: 1.2rem;
+            }
+        }
+
+        .nav__link-logout {
+            cursor: pointer;
+        }
+
+        .nav__link-user {
+            display: flex;
+            align-items: center;
+
+            .nav__user-img {
+                height: 3rem;
+                width: 2.9rem;
+                border-radius: 50%;
+                margin-right: $mb-0-5;
+                border: 1px solid $titleClr;
+
+                @include mixins.breakpoint-up(medium){
+                    height: 2.5rem;
+                    width: 2.4rem;
+                }
+            }
+
+            & span {
+                text-transform: capitalize;
+
+                @include mixins.breakpoint-up(medium){
+                    font-size: .8rem;
+                }
+            }
+        }
+        
+    
+        .nav__close {
+            position: absolute;
+            top: .9rem;
+            right: 1.25rem;
+            cursor: pointer;
+            background: transparent;
+    
+            @include mixins.breakpoint-up(medium) {
+                display: none;
+            }
+
+            &-btn {
+                width: 40px;
+                height: 40px;
+                fill: $textClrLight;
+            }
+        }
+    
+        .nav__btns {
+            display: flex;
+            align-items: center;
+            column-gap: 1rem;
+    
+            @include mixins.breakpoint-up(medium) {
+                margin-left: auto;
+				column-gap: 2rem;
+            }
+    
+            .nav__toggle,
+            .nav__search {
+                cursor: pointer;
+                background: transparent;
+            }
+
+            .nav__search-btn {
+                width: 30px;
+                height: 30px;
+                fill: $textClrLight;
+            }
+    
+            .nav__toggle {
+                @include mixins.breakpoint-up(medium) {
+                    display: none;
+                }
+
+                &-btn {
+                    width: 35px;
+                    height: 35px;
+                    fill: $textClrLight;
+                }
+            }
+        }
+    
+        .nav__search-form {
+            position: absolute;
+            top: 40%;
+            right: 5%;
+            width: 90%;
+            height: 1rem;
+            display: flex;
+            align-items: center;
+            transform: scaleY(0);
+            transform-origin: top;
+
+            @include mixins.breakpoint-up(medium){
+                width: 70%;
+            }
+
+            @include mixins.breakpoint-up(large){
+                width: 30rem;
+                right: 20%;
+            }
+
+            &.active-form {
+                transform: scaleY(1);
+            }
+
+            & label {
+                position: absolute;
+                top: -10%;
+                right: 4%;
+                cursor: pointer;
+
+                .close__search {
+                    background: #fff;
+                }
+            }
+
+            .close__search-btn {
+                width: 25px;
+                height: 25px;
+                fill: $textClrLight;
+            }
+    
+            .nav__search-input {
+                height: 100%;
+                width: 100%;
+                font-size: $fontMd;
+                border: none;
+                padding: 1rem;
+                text-transform: none;
+            }
+        }
+    }
+}
+
+.active-link {
+    text-decoration: underline;
+}
+
+.scroll-header {
+    background: $bodyClr;
+    box-shadow: 0 1px 4px #2825251a;
+}

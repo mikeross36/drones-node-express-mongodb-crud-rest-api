@@ -1,0 +1,33 @@
+header.header#header 
+    nav.nav.container 
+        a.nav__logo(href='/')
+            img(src='/images/drone-logo.svg' alt='nav logo')
+        .nav__menu#nav-menu 
+            ul.nav__list 
+                li.nav__item: a.nav__link(href='/#home') home 
+                li.nav__item: a.nav__link(href='/#products') products 
+                li.nav__item: a.nav__link(href='/#featureds') featured
+                if user != null 
+                    li.nav__item: a.nav__link.nav__link-logout logout
+                    li.nav__item: a.nav__link.nav__link-user(href='/me')
+                        img.nav__user-img(src=`/images/users/${user.photo}` alt=`photo of ${user.name}`)
+                        span= user.name.split(" ")[0]
+                else 
+                    li.nav__item: a.nav__link(href='/login') login 
+                    li.nav__item: a.nav__link(href='/signup') signup
+            button.nav__close#nav-close 
+                svg.nav__close-btn 
+                    use(xlink:href='/images/icons.svg#icon-x')
+        menu.nav__btns 
+            button.nav__search 
+                svg.nav__search-btn 
+                    use(xlink:href='/images/icons.svg#icon-search')
+            button.nav__toggle#nav-toggle 
+                svg.nav__toggle-btn 
+                    use(xlink:href='/images/icons.svg#icon-menu')
+        .nav__search-form 
+            label(for='nav-search-input')
+                svg.close__search-btn 
+                    use(xlink:href='/images/icons.svg#icon-x')
+            input.nav__search-input#nav-search-input(type='search' name='q' placeholder='search here...')
+

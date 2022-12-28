@@ -1,0 +1,63 @@
+extends base
+
+mixin navItem(link, icon, text, active)
+    li(class=`${active ? 'side__nav-active' : ''}`)
+        a(href=`${link}`)
+            svg 
+                use(xlink:href=`/images/icons.svg#icon-${icon}`)
+            | #{text}
+
+block content 
+    section.account.section.container 
+        .user__view 
+            nav.user__view-menu 
+                ui.side__nav 
+                    +navItem('#', 'settings', 'Settings', true)
+                    +navItem('/my-preorders', 'briefcase', 'My preorders')
+                    +navItem('#', 'star', 'My reviews')
+                    +navItem('#', 'credit-card', 'Billings')
+            
+                - if(user.role === 'admin')
+                    .admin__nav 
+                        h4.admin__nav-heading admin 
+                        ul.side__nav 
+                            +navItem('#', 'map', 'Manage products')
+                            +navItem('#', 'user', 'Manage users')
+                            +navItem('#', 'star' , 'Manage reviews')
+                            +navItem('#', 'briefcase', 'Manga preorders')
+
+            .user__view-content 
+                .user__view-form-container 
+
+                    //- without API
+                    //- form.form__user-data(action='/update-user-data', method='POST')
+
+                    //- with API
+                    form.form__user-data
+                        h3.form__title your account settings 
+                        .form__control 
+                            label.form__label(for='name') name 
+                            input.form__input#name(type='text', value=`${user.name}`, required)
+                        .form__control 
+                            label.form__label(for='email') email address 
+                            input.form__input#email(type='email', value=`${user.email}` required)
+                        .form__control.form__photo-upload
+                            img.form__user-photo(src=`/images/users/${user.photo}` alt=`${user.name} image`)
+                            input.form__upload#photo(type='file', accept='image/*', name='photo')
+                            label(for='photo') upload image 
+                        .form__control 
+                            button.button save
+                .user__view-form-container 
+                    form.form__user-password
+                        h3.form__title password update 
+                        .form__control 
+                            label.form__label(for='password-current') current password 
+                            input.form__input#login-password(type='password', placeholder='........', minlength='8', required)
+                        .form__control 
+                            label.form__label(for='password') new password 
+                            input.form__input#password(type='password', placeholder='........', minlength='8', required)
+                        .form__control 
+                            label.form__label(form='password-confirm') confirm password 
+                            input.form__input#password-confirm(type='password', placeholder='........', required)
+                        .form__control 
+                            button.button.save__password-btn save 
