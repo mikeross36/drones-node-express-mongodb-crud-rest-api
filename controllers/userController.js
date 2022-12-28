@@ -58,7 +58,6 @@ exports.resizeUserPhoto = poseCatch(async (req, res, next) => {
 });
 
 exports.updateMe = poseCatch(async (req, res, next) => {
-    // console.log(req.file)
     if (req.body.password || req.body.passwordConfirm) {
         return next(new ErrorResponse("You cannot update your password!", 401))
     }

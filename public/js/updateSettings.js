@@ -5,7 +5,7 @@ import { displayAlert } from "./alerts"
 export const updateUserData = (data) => {
     axios({
         method: "PATCH",
-        url: "http://localhost:3000/api/v1/users/update-me",
+        url: "/api/v1/users/update-me",
         data: data
     }).then(response => {
         if (response.data.status === "success") {
@@ -20,7 +20,7 @@ export const updateUserData = (data) => {
 export const updateUserPassword = (data) => {
     axios({
         method: "PATCH",
-        url: "http://localhost:3000/api/v1/users/update-password",
+        url: "/api/v1/users/update-password",
         data: data
     }).then(response => {
         const result = response.data;

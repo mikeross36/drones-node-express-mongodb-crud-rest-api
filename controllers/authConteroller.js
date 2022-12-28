@@ -164,8 +164,6 @@ exports.tokenProtect = poseCatch(async (req, res, next) => {
 
 exports.updatePassword = poseCatch(async (req, res, next) => {
     const user = await User.findById(req.user.id).select("+password");
-    console.log(user)
-    console.log(req.body)
     const isMatch = await user.matchPassword(req.body.loginPassword, user.password);
     
     if (!isMatch) {

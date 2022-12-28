@@ -9,6 +9,8 @@ const xss = require("xss-clean")
 const hpp = require("hpp")
 const cors = require("cors")
 const cookieParser = require("cookie-parser")
+const compression = require("compression")
+
 const ErrorResponse = require("./utils/ErrorResponse")
 const GlobalErrorHandler = require("./utils/globalErrorHandler")
 
@@ -57,9 +59,10 @@ app.use(hpp({
     whitelist: ["ratingsQuantity", "ratingsAverage", "difficulty", "price"]
 }));
 
+app.use(compression())
+
 app.use((req, res, next) => {
     req.requestTime = new Date().toLocaleDateString()
-    // console.log(req.cookies)
     next()
 });
 

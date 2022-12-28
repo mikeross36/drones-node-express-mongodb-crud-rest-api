@@ -61,7 +61,6 @@ if (userDataForm) {
         form.append("name", qs("#name").value);
         form.append("email", qs("#email").value);
         form.append("photo", qs("#photo").files[0])
-        console.log(form)
 
         updateUserData(form)
     })
@@ -75,7 +74,6 @@ if (userPasswordForm) {
         const loginPassword = qs("#login-password").value;
         const password = qs("#password").value;
         const passwordConfirm = qs("#password-confirm").value;
-        // console.log(loginPassword, password, passwordConfirm)
 
         updateUserPassword({ loginPassword, password, passwordConfirm })
         
