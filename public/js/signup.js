@@ -8,7 +8,7 @@ export const signup = (name, email, password, passwordConfirm) => {
     const signupData = { name, email, password, passwordConfirm }
     axios({
         method: "POST",
-        url: "http://localhost:3000/api/v1/users/signup",
+        url: "/api/v1/users/signup",
         data: signupData
     }).then(response => {
         const result = response.data;

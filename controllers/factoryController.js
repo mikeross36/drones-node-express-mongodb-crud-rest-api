@@ -71,7 +71,7 @@ exports.getAll = Model => {
         if (req.params.droneId) hasDrone = { drone: req.params.droneId }
         
         const prefill = new QueryPrefill(Model.find(hasDrone), req.query)
-            // .filterFind()
+            .filterFind()
             .sortBy()
             .selectFields()
             .paginate();

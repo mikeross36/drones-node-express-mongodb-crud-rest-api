@@ -144,6 +144,7 @@ exports.tokenProtect = poseCatch(async (req, res, next) => {
         return verified;
     }
     const verified = await checkToken()
+    console.log(verified)
 
     async function checkUser() {
         const currUser = await User.findById(verified.id)

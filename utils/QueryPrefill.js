@@ -6,20 +6,20 @@ class QueryPrefill {
         this.queryString = queryString;
     }
 
-    // filterFind() {
-    //     const queryObj = { ...this.queryString }
-    //     const excludes = ["page", "sort", "limit", "fields"]
-    //     excludes.forEach(field => delete queryObj[field])
+    filterFind() {
+        const queryObj = { ...this.queryString }
+        const excludes = ["page", "sort", "limit", "fields"]
+        excludes.forEach(field => delete queryObj[field])
 
-    //     let queryObjStr = JSON.stringify(queryObj)
-    //     queryObjStr = queryObjStr.replace(/\b(lt|lte|gt|gte)\b/g, (match) => {
-    //         return `$${match}`
-    //     });
-    //     const queryObjReg = JSON.parse(queryObjStr)
-    //     this.query = this.query.find(queryObjReg)
+        let queryObjStr = JSON.stringify(queryObj)
+        queryObjStr = queryObjStr.replace(/\b(lt|lte|gt|gte)\b/g, (match) => {
+            return `$${match}`
+        });
+        const queryObjReg = JSON.parse(queryObjStr)
+        this.query = this.query.find(queryObjReg)
 
-    //     return this;
-    // }
+        return this;
+    }
 
     sortBy() {
         if (this.queryString.sort) {
