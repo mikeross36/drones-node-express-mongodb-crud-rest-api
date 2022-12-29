@@ -13,6 +13,6 @@ router.get("/login", authController.isUserLoggendIn, viewsController.getLoginFor
 router.get("/me", authController.tokenProtect, viewsController.getAccount)
 router.get("/featured/:slug", authController.isUserLoggendIn, viewsController.getFeatured)
 router.get("/reviews", authController.isUserLoggendIn, viewsController.getReviews)
-router.get("/my-preorders", preorderController.createPreorderCheckout, authController.tokenProtect, viewsController.getMyPreorders)
+router.get("/my-preorders", authController.tokenProtect, viewsController.getMyPreorders)
 
 module.exports = router;

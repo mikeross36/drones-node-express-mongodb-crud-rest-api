@@ -19,15 +19,20 @@ const userRouter = require("./routes/userRoutes")
 const reviewRouter = require("./routes/reviewReoutes")
 const featuredRouter = require("./routes/featuredRoutes")
 const preorderRouter = require("./routes/preorderRoutes")
+const preorderController = require("./controllers/preorderController")
 const viewsRouter = require("./routes/viewsRoutes")
 
 const app = express();
+
+app.enable("trust proxy");
 
 app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "views"));
 
 // global middlewares
 app.use(cors());
+app.options("*", cors());
+
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use(helmet());
@@ -46,6 +51,8 @@ const limiter = rateLimit({
     message: "Too many requests from this IP address! Try again in an hour"
 });
 app.use("/api", limiter)
+
+app.post("/webhook-checkout", express.raw({type: "application/json"}), preorderController.webhookCheckout)
 
 app.use(express.json({ limit: "10kb" }));
 app.use(express.urlencoded({ extended: true, limit: "10kb" }));
