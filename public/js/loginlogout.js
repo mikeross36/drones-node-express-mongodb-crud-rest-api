@@ -31,9 +31,12 @@ export const logout = () => {
         method: "GET",
         url: "/api/v1/users/logout"
     }).then(response => {
-        if (response.data.status === "success") {
+        const result = response.data;
+        
+        if (result.data.status === "success") {
             return location.reload(true)
         }
+        return result;
     }).catch(error => {
         displayAlert("error", `Error logging out ${error}`)
     })
