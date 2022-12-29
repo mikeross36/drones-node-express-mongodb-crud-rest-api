@@ -23,6 +23,6 @@ export const signup = (name, email, password, passwordConfirm) => {
         }
         return result;
     }).catch(error => {
-        displayAlert("error", error.response.data.message)
+        displayAlert("error", error.result.data.message)
     })
 };
