@@ -33,7 +33,7 @@ export const logout = () => {
     }).then(response => {
         const result = response.data;
         
-        if (result.data.status === "success") {
+        if (result.status === "success") {
             return location.reload(true)
         }
         return result;

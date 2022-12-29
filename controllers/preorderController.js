@@ -16,7 +16,7 @@ exports.getCheckoutSession = poseCatch(async (req, res, next) => {
                 currency: "eur",
                 product_data: {
                     name: drone.name,
-                    images:[`./../public/images/drones/${drone.imageCover}`]
+                    images:[`${req.protocol}://${req.get("host")}/images/drones/${drone.imageCover}`]
                 },
                 unit_amount: drone.price
             },
