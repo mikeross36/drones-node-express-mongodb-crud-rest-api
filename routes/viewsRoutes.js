@@ -5,7 +5,7 @@ const authController = require("./../controllers/authConteroller")
 const router = express.Router()
 
 router.get("/signup", viewsController.getSignupForm)
-router.get("/checkout", viewsController.getCheckoutForm)
+router.get("/checkout",authController.isUserLoggendIn, viewsController.getCheckoutForm)
 router.get("/forgot-password", viewsController.getForgotForm)
 
 router.get("/", authController.isUserLoggendIn, viewsController.getMain)
