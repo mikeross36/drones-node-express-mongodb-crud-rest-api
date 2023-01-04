@@ -3,13 +3,13 @@ import "core-js/actual";
 import "regenerator-runtime/runtime";
 import { toggleMobMenu, toggleSearch, closeNavMenu, filterSearch, headerOnScroll } from "./navFeatures"
 import { navGlobals, loginFormGlobals, qs, signupFormGlobals, accountGlobals, preorderGlobals } from "./utils"
-import { login, logout } from "./loginlogout"
+import { login, logout, forgot } from "./loginlogout"
 import { signup } from "./signup"
 import { updateUserData, updateUserPassword } from "./updateSettings"
 import { preorderProduct } from "./stripe";
 
 const { navMenu, navSearchForm, header, logOutBtn } = navGlobals();
-const { loginForm } = loginFormGlobals();
+const { loginForm, forgotForm } = loginFormGlobals();
 const { signupForm } = signupFormGlobals();
 const { userDataForm, userPasswordForm, savePasswordBtn } = accountGlobals();
 const { preorderBtn, preorderForm } = preorderGlobals();
@@ -39,6 +39,15 @@ if (loginForm) {
         login(email, password)
     })
 };
+
+if (forgotForm) {
+    forgotForm.addEventListener("submit", e => {
+        e.preventDefault()
+        const email = qs("#email").value;
+        console.log(email)
+        forgot(email)
+    })
+}
 
 if(logOutBtn) logOutBtn.addEventListener("click", logout)
 

@@ -39,6 +39,12 @@ exports.getLoginForm = (req, res) => {
     })
 };
 
+exports.getForgotForm = (req, res) => {
+    res.status(200).render("forgot", {
+        title: "Enter email to reset password"
+    })
+};
+
 exports.getSignupForm = (req, res) => {
     res.status(200).render("signup", {
         title: "Signup to create account"
@@ -55,7 +61,7 @@ exports.getCheckoutForm = (req, res) => {
     res.status(200).render("checkout", {
         title: "checkout"
     })
-}
+};
 
 exports.getFeatured = poseCatch(async (req, res, next) => {
     const featured = await Featured.findOne({ slug: req.params.slug }).populate({

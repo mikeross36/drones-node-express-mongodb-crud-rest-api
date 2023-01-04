@@ -24,7 +24,9 @@ export function navGlobals() {
 
 export function loginFormGlobals() {
     const loginForm = qs(".login__form")
-    return {loginForm}
+    const forgotForm = qs(".forgot__form")
+
+    return {loginForm, forgotForm}
 };
 
 export function signupFormGlobals() {

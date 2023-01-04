@@ -5,12 +5,13 @@ block content
         h2.section__title Log in into your account
         .login__form-bcg 
             form.login__form
-                img.login__form-img(src='/images/icons/mail-box.svg')
                 .form__control 
                     label.form__label(for='email') email address 
                     input.form__input#email(type='email', placeholder='your@someemail.com', required)
                 .form__control 
                     label.form__label(for='password') password 
                     input.form__input.input__pass#password(type='password', placeholder='........')
+                .forgot__password 
+                    a.forgot__password-link(href='/forgot-password') Forgot Password?
                 .form__control 
                     button.button login

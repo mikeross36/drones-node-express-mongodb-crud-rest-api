@@ -1,0 +1,13 @@
+extends base
+
+block content 
+    section.forgot.section.container#login 
+        h2.section__title #{title}
+        .forgot__form-bcg 
+            form.forgot__form
+                img.forgot__form-img(src='/images/icons/mail-box.svg')
+                .form__control 
+                    label.form__label(for='email') email address 
+                    input.form__input#email(type='email', placeholder='your@someemail.com', required)
+                .form__control 
+                    button.button submit
