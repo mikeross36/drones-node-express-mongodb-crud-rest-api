@@ -16,6 +16,21 @@ const preorderSchema = new mongoose.Schema({
         type: Number,
         required: [true, "Preorder price has to be defined"]
     },
+    // creditCardNum: {
+    //     type: String,
+    //     required: [true, "Enter credit card number!"],
+    // },
+    // nameOnCard: {
+    //     type: String,
+    // },
+    // cardExpireDate: {
+    //     type: Date,
+    //     required: [true, "Entre expiry date!"]
+    // },
+    // cardSecurityCode: {
+    //     type: String,
+    //     required: [true, "Entre card security code!"]
+    // },
     createdAt: {
         type: Date,
         default: Date.now()

@@ -41,7 +41,8 @@ export function accountGlobals() {
 };
 
 export function preorderGlobals() {
+    const preorderForm = qs(".preorder__form")
     const preorderBtn = qs("#preorder-product")
 
-    return {preorderBtn}
+    return {preorderBtn, preorderForm}
 };

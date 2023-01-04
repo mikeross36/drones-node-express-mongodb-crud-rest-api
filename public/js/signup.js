@@ -1,7 +1,7 @@
 "use strict"
 import axios from "axios"
-import "core-js/actual"
-import "regenerator-runtime/runtime"
+// import "core-js/actual"
+// import "regenerator-runtime/runtime"
 import {displayAlert} from "./alerts"
 
 export const signup = (name, email, password, passwordConfirm) => {

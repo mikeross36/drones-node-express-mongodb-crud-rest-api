@@ -1,5 +1,5 @@
 "use strict"
-import axios from "axios"
+import axios from "axios";
 import { displayAlert } from "./alerts";
 
 export const login = (email, password) => {

@@ -1692,3 +1692,77 @@ input[type=search]::-webkit-search-results-decoration {
   display: inline-block;
   color: #da802c;
 }
+
+@media screen and (min-width: 36em) {
+  .paypal .pp__container {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+  }
+}
+.paypal .pp__container form {
+  padding: 20px;
+  background: #ffffff;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+.paypal .pp__container form .row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+.paypal .pp__container form .row .col {
+  flex: 1 1 250px;
+}
+.paypal .pp__container form .row .col .title {
+  font-size: 20px;
+  color: #333;
+  padding-bottom: 5px;
+  text-transform: uppercase;
+}
+.paypal .pp__container form .row .col .inputBox {
+  margin: 15px 0;
+}
+.paypal .pp__container form .row .col .inputBox span {
+  margin-bottom: 10px;
+  display: block;
+}
+.paypal .pp__container form .row .col .inputBox input {
+  width: 70%;
+  border: 1px solid #ccc;
+  padding: 10px 15px;
+  font-size: 15px;
+  text-transform: none;
+}
+.paypal .pp__container form .row .col .inputBox input:focus {
+  border: 1px solid #1f50a1;
+}
+.paypal .pp__container form .row .col .flex {
+  display: flex;
+  gap: 15px;
+}
+.paypal .pp__container form .row .col .flex .inputBox {
+  margin-top: 5px;
+}
+.paypal .pp__container form .row .col .inputBox img {
+  height: 34px;
+  margin-top: 5px;
+  filter: drop-shadow(0 0 1px #000);
+}
+.paypal .pp__container form .submit-btn {
+  margin: 0 auto;
+  max-width: 50%;
+  padding: 12px;
+  font-size: 17px;
+  background: #1f50a1;
+  color: #ffffff;
+  margin-top: 5px;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease-in-out;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+.paypal .pp__container form .submit-btn:hover {
+  background: #088d3f;
+}

@@ -39,8 +39,8 @@ app.use(helmet());
 app.use(helmet({ contentSecurityPolicy: false }));
 
 app.use(function(req, res, next) { 
-    res.setHeader( 'Content-Security-Policy', "script-src 'self' https://js.stripe.com/v3/"); 
-    return next(); 
+    res.setHeader('Content-Security-Policy', "script-src 'self' https://checkout.stripe.com")
+    next()
 });
 
 if (process.env.NODE_ENV === "development") app.use(morgan("dev"));

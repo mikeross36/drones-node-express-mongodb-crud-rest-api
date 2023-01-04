@@ -9,7 +9,7 @@ html
             title Viridian Tech Drones
             link(rel='shortcut icon' type='image/png' href='/images/favicon.ico')
             link(rel='stylesheet' href='/css/main.css')
-            script(type='module' src='/js/bundle/main.js')
+            
     body 
         include _header
 
@@ -17,7 +17,8 @@ html
 
         include _footer
 
-        script(src='https://js.stripe.com/v3/' crossorigin="anonimus")
+        script(src='https://js.stripe.com/v3/')
+        script(type='module' src='/js/bundle/main.js')
 
 
 

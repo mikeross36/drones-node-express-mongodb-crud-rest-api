@@ -187,6 +187,7 @@ exports.restrictTo = (...userRoles) => {
     }
 };
 
+// frontend
 exports.isUserLoggendIn = async (req, res, next) => {
     if (req.cookies.jwt) {
         try {

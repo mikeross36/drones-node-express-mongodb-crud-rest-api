@@ -1,7 +1,7 @@
 extends base
 
 include _reviewCard
-    //- script(src='https://js.stripe.com/v3/' crossorigin="")
+    
 block content 
     section.product.section.container 
         .product__description 
@@ -34,8 +34,9 @@ block content
                         img(src=`/images/icons/ratings-icon.svg`)
                         p= `Ratings: ${product.ratingsAverage} / 5`
                 if user != null
-                    .preorder__button 
-                        .button.button--small#preorder-product(data-product-id=`${product.id}`) preorder 
+                    .preorder__button
+                        //- button.button.button--small#preorder-product(data-product-id=`${product.id}`) preorder 
+                        a.button.button--small#preorder-product(href='/checkout') preorder 
                 else 
                     .preorder__button 
                         a.button.button--small(href='/login') login for preorder 

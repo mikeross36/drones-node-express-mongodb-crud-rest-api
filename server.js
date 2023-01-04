@@ -18,7 +18,7 @@ mongoose.set('strictQuery', true);
 mongoose.connect(DB).then(() => console.log("Database connected successfully"));
 
 const port = process.env.PORT || 3000;
-const server = app.listen(port, () => console.log(`App is running on ${port}...`));
+const server = app.listen(port, () => console.log(`App is running on port ${port}...`));
 
 process.on("unhandledRejection", err => {
     console.log("UNHANDLED REJECTION!. Shutting down...")

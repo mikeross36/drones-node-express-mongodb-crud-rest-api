@@ -7,7 +7,7 @@ const router = express.Router()
 
 router.use(authController.tokenProtect)
 
-router.get("/checkout-session/:droneId", authController.tokenProtect, preorderController.getCheckoutSession)
+router.get("/checkout-session/:droneId", preorderController.getCheckoutSession)
 
 router.use(authController.restrictTo("admin","user"))
 

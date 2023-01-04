@@ -34,6 +34,7 @@ exports.getCheckoutSession = poseCatch(async (req, res, next) => {
         stauts: "success",
         session: session
     })
+    console.log(session)
 });
 
 exports.createPreorderCheckout = async session => {
@@ -55,7 +56,7 @@ exports.webhookCheckout = (req, res, next) => {
             )
         }
         catch(error){
-            res.status(400).send(`Webhook error: ${error.message}`)
+            return res.status(400).send(`Webhook error: ${error.message}`)
         }
     }
 
@@ -72,34 +73,5 @@ exports.getAllPreorders = factory.getAll(Preorder)
 exports.updatePreorder = factory.updateOne(Preorder)
 exports.deletePreorder = factory.deleteOne(Preorder)
 
-// exports.getCheckoutSession = poseCatch(async (req, res, next) => {
-//     const drone = await Drone.findById(req.params.droneId);
 
-//     const droneItems = [{id:1, price: drone.price, name: drone.name}]
 
-//     const session = await stripe.checkout.sessions.create({
-//         payment_method_types: ["card"],
-//         line_items: droneItems.map((droneItem) => {
-//             return {
-//                 quantity: 1,
-//                 price_data: {
-//                     currency: "eur",
-//                     product_data: {
-//                         name: droneItem.name,
-//                     },
-//                     unit_amount: droneItem.price
-//                 }
-//             }
-//         }),
-//         mode: "payment",
-//         success_url: `${req.protocol}://${req.get("host")}/`,
-//         cancel_url: `${req.protocol}://${req.get("host")}/drone/${drone.slug}`,
-//         customer_email: req.user.email,
-//         client_reference_id: req.params.droneId,
-//     })
-
-//     res.status(200).json({
-//         stauts: "success",
-//         session: session
-//     })
-// });

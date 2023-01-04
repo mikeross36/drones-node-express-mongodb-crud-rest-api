@@ -51,6 +51,12 @@ exports.getAccount = (req, res) => {
     })
 };
 
+exports.getCheckoutForm = (req, res) => {
+    res.status(200).render("checkout", {
+        title: "checkout"
+    })
+}
+
 exports.getFeatured = poseCatch(async (req, res, next) => {
     const featured = await Featured.findOne({ slug: req.params.slug }).populate({
         path: "reviews",
@@ -85,3 +91,13 @@ exports.getMyPreorders = poseCatch(async (req, res, next) => {
         products: products
     })
 });
+
+// exports.getPreorderCard = poseCatch(async (req, res, next) => {
+//     const product = await Drone.findOne({ slug: req.params.slug })
+//     if (!product) {
+//         return next(new ErrorResponse("Product not found", 404))
+//     }
+//     res.status(200).render("preorderCard", {
+//         product: product
+//     })
+// });

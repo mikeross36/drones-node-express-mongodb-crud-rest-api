@@ -12,7 +12,7 @@ const { navMenu, navSearchForm, header, logOutBtn } = navGlobals();
 const { loginForm } = loginFormGlobals();
 const { signupForm } = signupFormGlobals();
 const { userDataForm, userPasswordForm, savePasswordBtn } = accountGlobals();
-const { preorderBtn } = preorderGlobals();
+const { preorderBtn, preorderForm } = preorderGlobals();
 
 if (navMenu) {
     toggleMobMenu()
@@ -92,4 +92,7 @@ if (preorderBtn) {
         preorderProduct(productId);
     })
 };
+
+
+
 

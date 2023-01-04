@@ -1,11 +1,11 @@
 const express = require("express")
 const viewsController = require("./../controllers/viewsController")
 const authController = require("./../controllers/authConteroller")
-const preorderController = require("./../controllers/preorderController")
 
 const router = express.Router()
 
 router.get("/signup", viewsController.getSignupForm)
+router.get("/checkout", viewsController.getCheckoutForm)
 
 router.get("/", authController.isUserLoggendIn, viewsController.getMain)
 router.get("/product/:slug", authController.isUserLoggendIn, viewsController.getProduct)
