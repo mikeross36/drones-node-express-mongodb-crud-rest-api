@@ -106,7 +106,7 @@ exports.resetPassword = poseCatch(async (req, res, next) => {
     async function getUser() {
         const user = await User.findOne({
             passwordResetToken: hashResetToken,
-            passwordResetExpires: {$gt: Date.now()}
+            passwordResetExpires: { $gt: Date.now() }
         })
         return user;
     }
@@ -123,7 +123,7 @@ exports.resetPassword = poseCatch(async (req, res, next) => {
     }
     await setNewPassword();
     sendGeneratedToken(user, req, res, 200)
-})
+});
 
 exports.tokenProtect = poseCatch(async (req, res, next) => {
     async function checkToken() {

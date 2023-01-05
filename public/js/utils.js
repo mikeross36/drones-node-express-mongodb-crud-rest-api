@@ -24,10 +24,17 @@ export function navGlobals() {
 
 export function loginFormGlobals() {
     const loginForm = qs(".login__form")
-    const forgotForm = qs(".forgot__form")
+    
 
-    return {loginForm, forgotForm}
+    return {loginForm}
 };
+
+export function forgotResetGlobals() {
+    const forgotForm = qs(".forgot__form")
+    const resetPasswordForm = qs(".resetpassword__form")
+
+    return {forgotForm, resetPasswordForm}
+}
 
 export function signupFormGlobals() {
     const signupForm = qs(".signup__form")

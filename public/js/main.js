@@ -2,14 +2,16 @@
 import "core-js/actual";
 import "regenerator-runtime/runtime";
 import { toggleMobMenu, toggleSearch, closeNavMenu, filterSearch, headerOnScroll } from "./navFeatures"
-import { navGlobals, loginFormGlobals, qs, signupFormGlobals, accountGlobals, preorderGlobals } from "./utils"
-import { login, logout, forgot } from "./loginlogout"
+import { navGlobals, loginFormGlobals, forgotResetGlobals, qs, signupFormGlobals, accountGlobals, preorderGlobals } from "./utils"
+import { login, logout } from "./loginlogout"
+import { forgot, reset } from "./forgot-reset-password";
 import { signup } from "./signup"
 import { updateUserData, updateUserPassword } from "./updateSettings"
 import { preorderProduct } from "./stripe";
 
 const { navMenu, navSearchForm, header, logOutBtn } = navGlobals();
-const { loginForm, forgotForm } = loginFormGlobals();
+const { loginForm } = loginFormGlobals();
+const {forgotForm, resetPasswordForm} = forgotResetGlobals()
 const { signupForm } = signupFormGlobals();
 const { userDataForm, userPasswordForm, savePasswordBtn } = accountGlobals();
 const { preorderBtn, preorderForm } = preorderGlobals();
@@ -46,6 +48,17 @@ if (forgotForm) {
         const email = qs("#email").value;
         console.log(email)
         forgot(email)
+    })
+}
+
+if (resetPasswordForm) {
+    resetPasswordForm.addEventListener("submit", e => {
+        e.preventDefault()
+        const password = qs("#password").value;
+        const passwordConfirm = qs("#password-confirm").value;
+        const token = qs("#reset-token").value;
+
+        reset(password, passwordConfirm, token)
     })
 }
 

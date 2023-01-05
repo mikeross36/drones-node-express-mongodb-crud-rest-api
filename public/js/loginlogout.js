@@ -26,28 +26,6 @@ export const login = (email, password) => {
     })
 };
 
-export const forgot = (email) => {
-    const userEmail = {email: email}
-    axios({
-        method: "POST",
-        url: "/api/v1/users/forgot-password",
-        data: userEmail
-    }).then(response => {
-        const result = response.data;
-        if (result.status === "success") {
-            displayAlert("success", `Verification email sent to ${email}`)
-            const timer = setTimeout(()=> {
-                location.assign("/")
-            },1500)
-            return ()=> {
-                clearTimeout(timer)
-            }
-        }
-    }).catch(error => {
-        displayAlert("error", error.response.data.message)
-    })
-}
-
 export const logout = () => {
     axios({
         method: "GET",

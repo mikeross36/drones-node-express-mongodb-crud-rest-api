@@ -5,6 +5,7 @@ const Drone = require("./../models/droneModel")
 const Featured = require("./../models/featuredModel")
 const Review = require("./../models/reviewModel")
 const Preorder = require("./../models/preorderModel")
+const User = require("./../models/userModel")
 
 exports.getMain = poseCatch(async (req, res, next) => {
     const products = await Drone.find()
@@ -44,6 +45,23 @@ exports.getForgotForm = (req, res) => {
         title: "Enter email to reset password"
     })
 };
+
+exports.getResetUrl = poseCatch(async (req, res, next) => {
+    const resetTokenString = req.params.token;
+    const hashResetToken = crypto.createHash("sha256").update(resetTokenString).digest("hex")
+
+    const validToken = await User.findOne({
+        passwordResetToken: hashResetToken
+    })
+    if (!validToken) {
+        return next(new ErrorResponse("Token invalid or expired!", 400))
+    }
+    res.status(200).render("resetPassword", {
+        title: "reset your password",
+        token: validToken,
+        email: validToken.email
+    })
+});
 
 exports.getSignupForm = (req, res) => {
     res.status(200).render("signup", {
